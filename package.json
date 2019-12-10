@@ -6,8 +6,10 @@
   "author": "lemmon",
   "license": "MIT",
   "scripts": {
-    "w": "watchify element.js -o dist/element.js --verbose",
-    "build": "browserify element.js | babel-env | minify > dist/element.js"
+    "build": "browserify element.js | babel-env | minify > dist/element.js",
+    "version": "npm run build && git add -A dist",
+    "postversion": "git push && git push --tags && npm publish",
+    "w": "watchify element.js -o dist/element.js --verbose"
   },
   "browserslist": "firefox 63, chrome 67",
   "eslintConfig": {
