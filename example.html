@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/abrusco@0.8.1/css/abrusco.min.css">
+  <style media="screen">
+  custom-textarea {
+    --placeholder-color: orange;
+    --placeholder-opacity: .8;
+  }
+  custom-textarea:focus-within {
+    outline: 2px solid;
+    outline-offset: 1px;
+  }
+  custom-textarea[disabled] {
+    opacity: .5;
+  }
+  </style>
+  <script src="dist/element.js"></script>
+</head>
+<body class="col justify-center sd-p1">
+
+  <div>
+    <div class="max36 mx">
+
+      <form>
+        <div class="p05">
+          <div class="p05"><custom-textarea name="description" class="ba p1b f2 lh4 code" style="min-height: 10rem;">Hello World!</custom-textarea></div>
+          <div class="p05"><custom-textarea name="second" class="ba p1b f2 lh4 code" placeholder="Placeholder"></custom-textarea></div>
+          <div class="p05"><custom-textarea name="disabled" disabled>Disabled</custom-textarea></div>
+          <div class="p05"><custom-textarea name="readonly" readonly>Read Only</custom-textarea></div>
+          <div class="p05"><textarea name="textarea">HTML Textarea.</textarea></div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <script>
+  // form
+  const form = document.forms[0]
+  form.oninput = e => {
+    //console.log(e.target.name, '=', e.target.value)
+  }
+  // textarea
+  document.querySelector('custom-textarea').oninput = e => {
+    //console.log(e.target.name, '=', e.target.value)
+  }
+  </script>
+
+</body>
+</html>

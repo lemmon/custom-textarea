@@ -1,0 +1,18 @@
+{
+  "name": "@lemmon/custom-textarea",
+  "version": "0.0.1",
+  "main": "index.js",
+  "description": "Web Components custom-textarea element.",
+  "author": "lemmon",
+  "license": "MIT",
+  "scripts": {
+    "w": "watchify element.js -o dist/element.js --verbose",
+    "build": "browserify element.js | babel-env | minify > dist/element.js"
+  },
+  "browserslist": "firefox 63, chrome 67",
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 2018
+    }
+  }
+}
