@@ -47,6 +47,12 @@ module.exports = class TextArea extends HTMLElement {
       this.textContent = e.target.value
       this.updatePreview()
     }
+    this._input.onchange = e => {
+      this.dispatchEvent(new Event('change', {
+        bubbles: true,
+        cancelable: true
+      }))
+    }
     const style = document.createElement('style')
     style.textContent = css
     shadow.appendChild(style)

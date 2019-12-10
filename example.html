@@ -43,8 +43,14 @@
   form.oninput = e => {
     //console.log(e.target.name, '=', e.target.value)
   }
+  form.onchange = e => {
+    //console.log(e.target.name, '=', e.target.value)
+  }
   // textarea
   document.querySelector('custom-textarea').oninput = e => {
+    //console.log(e.target.name, '=', e.target.value)
+  }
+  document.querySelector('custom-textarea').onchange = e => {
     //console.log(e.target.name, '=', e.target.value)
   }
   </script>
