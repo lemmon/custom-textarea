@@ -1,2 +1,2 @@
-const TextArea = require('./')
-customElements.define('custom-textarea', TextArea);
+const Textarea = require('./')
+customElements.define('custom-textarea', Textarea)
