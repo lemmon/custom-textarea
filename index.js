@@ -62,14 +62,25 @@ module.exports = class TextArea extends HTMLElement {
 
   connectedCallback() {
     this._input.value = this.textContent
-    this._input.disabled = this.hasAttribute('disabled')
-    this._input.readOnly = this.hasAttribute('readonly')
     this._input.placeholder = this.getAttribute('placeholder') || ''
     this.updatePreview()
   }
 
+  static get observedAttributes() {
+    return ['disabled', 'readonly']
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    this._input.disabled = this.hasAttribute('disabled')
+    this._input.readOnly = this.hasAttribute('readonly')
+  }
+
   get name() {
     return this.getAttribute('name')
+  }
+
+  set name(name) {
+    this.setAttribute('name', name)
   }
 
   get value() {
@@ -79,6 +90,24 @@ module.exports = class TextArea extends HTMLElement {
   set value(value) {
     this._input.value = value
     this.textContent = value
+  }
+
+  get disabled() {
+    return this.hasAttribute('disabled')
+  }
+
+  set disabled(is) {
+    if (is) this.setAttribute('disabled', '')
+    else this.removeAttribute('disabled')
+  }
+
+  get readonly() {
+    return this.hasAttribute('readonly')
+  }
+
+  set readonly(is) {
+    if (is) this.setAttribute('readonly', '')
+    else this.removeAttribute('readonly')
   }
 
   updatePreview() {

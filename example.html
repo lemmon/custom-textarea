@@ -30,6 +30,7 @@
           <div class="p05"><custom-textarea name="second" class="ba p1b f2 lh4 code" placeholder="Placeholder"></custom-textarea></div>
           <div class="p05"><custom-textarea name="disabled" disabled>Disabled</custom-textarea></div>
           <div class="p05"><custom-textarea name="readonly" readonly>Read Only</custom-textarea></div>
+          <div class="p05" id="dynamic"></div>
           <div class="p05"><textarea name="textarea">HTML Textarea.</textarea></div>
         </div>
       </form>
@@ -53,6 +54,17 @@
   document.querySelector('custom-textarea').onchange = e => {
     //console.log(e.target.name, '=', e.target.value)
   }
+  // dynamically created
+  const el = document.createElement('custom-textarea')
+  el.className = 'ba p1b f2 lh4 code'
+  el.name = 'body'
+  el.value = 'Dynamically created.'
+  el.disabled = true
+  el.readonly = false
+  dynamic.appendChild(el)
+  el.readonly = true
+  el.disabled = false
+  el.readonly = false
   </script>
 
 </body>
