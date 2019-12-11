@@ -1,4 +1,4 @@
-# custom-textarea
+# <custom-textarea>
 
 Web Components custom-textarea element.
 
