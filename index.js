@@ -62,17 +62,17 @@ module.exports = class TextArea extends HTMLElement {
 
   connectedCallback() {
     this._input.value = this.textContent
-    this._input.placeholder = this.getAttribute('placeholder') || ''
     this.updatePreview()
   }
 
   static get observedAttributes() {
-    return ['disabled', 'readonly']
+    return ['placeholder', 'disabled', 'readonly']
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
     this._input.disabled = this.hasAttribute('disabled')
     this._input.readOnly = this.hasAttribute('readonly')
+    this._input.placeholder = this.getAttribute('placeholder')
   }
 
   get name() {
@@ -90,6 +90,14 @@ module.exports = class TextArea extends HTMLElement {
   set value(value) {
     this._input.value = value
     this.textContent = value
+  }
+
+  get placeholder() {
+    return this.getAttribute('placeholder')
+  }
+
+  set placeholder(value) {
+    this.setAttribute('placeholder', value)
   }
 
   get disabled() {
