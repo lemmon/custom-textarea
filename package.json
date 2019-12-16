@@ -12,6 +12,20 @@
     "w": "watchify element.js -o dist/element.js --verbose"
   },
   "browserslist": "firefox 63, chrome 67",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemmon/custom-textarea.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lemmon/custom-textarea/issues"
+  },
+  "keywords": [
+    "html",
+    "web-components",
+    "custom-elements",
+    "textarea",
+    "autogrow"
+  ],
   "eslintConfig": {
     "parserOptions": {
       "ecmaVersion": 2018
