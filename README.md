@@ -40,11 +40,10 @@ require('@lemmon/custom-textarea/element')
 <custom-textarea name="text">Hello World!</custom-textarea>
 ```
 
-You can apply your own styles. Fonts, colors, line-height, and padding are inherited. Some styles can be defined with CSS variables.
+You can apply your own styles. Fonts, colors, line-height, and padding are inherited. Placeholder styles can be defined using CSS variables.
 
 ```css
 custom-textarea {
-  --color: black;              /* default: inherit */
   --placeholder-color: orange; /* default: inherit */
   --placeholder-opacity: 1;    /* default: 0.5 */
 }
