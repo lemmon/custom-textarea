@@ -46,7 +46,6 @@ module.exports = class TextArea extends HTMLElement {
     this._preview.style.color = 'transparent'
     this._input = document.createElement('textarea')
     this._input.oninput = e => {
-      this.textContent = e.target.value
       this.updatePreview()
     }
     this._input.onchange = e => {
@@ -91,7 +90,6 @@ module.exports = class TextArea extends HTMLElement {
 
   set value(value) {
     this._input.value = value
-    this.textContent = value
     this.updatePreview()
   }
 
