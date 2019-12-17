@@ -19,6 +19,10 @@
   "bugs": {
     "url": "https://github.com/lemmon/custom-textarea/issues"
   },
+  "files": [
+    "/dist",
+    "/*.js"
+  ],
   "keywords": [
     "html",
     "web-components",

@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+const fs = require('fs')
+const path = require('path')
+
+const file = path.resolve(__dirname, '../docs/index.html')
+const dist = path.resolve(__dirname, '../docs/dist/index.html')
+
+// read file
+const code = fs.readFileSync(file, 'utf8')
+  // javascript
+  .replace(/( +?)<script src="(\.[^"]+\.js)"><\/script>/g, (m, space, href) => {
+    const code = fs.readFileSync(path.resolve(path.dirname(file), href), 'utf8')
+    return `${space}<script>\n${space}${code}\n${space}</script>`
+  })
+
+// write file
+fs.writeFileSync(dist, code, 'utf8')
+
+console.log('> docs processed')

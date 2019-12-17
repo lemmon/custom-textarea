@@ -1,0 +1,16 @@
+#!/bin/sh
+
+HOST=37.9.175.3
+USER=lemmonjuice.com
+DEST=/web/custom-textarea
+PASS=$(security find-internet-password -s $HOST -a $USER -r ftps -w)
+DIST=docs/dist
+
+bin/build
+
+ftpup \
+  -i '**/.DS_Store' \
+  -u ${USER} \
+  -p ${PASS} \
+  ${DIST} \
+  ${HOST}${DEST}

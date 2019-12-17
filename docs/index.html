@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>&lt;custom-textarea&gt; Web Components Custom Element</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/abrusco@0.8.1/css/abrusco.min.css">
+  <link rel="stylesheet" href="https://abrusco.com/bundle.css">
+  <style media="screen">
+  custom-textarea {
+    --placeholder-color: inherit;
+    --placeholder-opacity: .5;
+  }
+  custom-textarea[disabled] {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+  </style>
+  <script src="../dist/element.js"></script>
+  <script>
+  function toggleDisabled(input) {
+    textarea.disabled = input.checked
+  }
+  function toggleReadonly(input) {
+    textarea.readonly = input.checked
+  }
+  function insertText() {
+    textarea.value = Array(Math.ceil(Math.random() * 3)).fill(null).map(() => (
+      Array(Math.ceil(Math.random() * 32)).fill('Hello World.').join(' ')
+    )).join('\n\n')
+  }
+  function clearText() {
+    textarea.value = ''
+  }
+  </script>
+</head>
+<body class="col max64">
+
+  <header class="py2 md-px1 ld-p2">
+    <div class="p075">
+      <h1 class="p025 h2 lh2 fw700">&lt;custom-textarea&gt;</h1>
+      <div class="p025">
+        <p class="lh4 color-black-50">Web Components custom-textarea element.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="ld-px1">
+    <hr class="px1 div color-black-10">
+  </div>
+
+  <main class="span1 py1 ld-py2"><div class="p05">
+
+    <section class="py1 md-px1 ld-p2"><div class="p05">
+      <div class="copy lh4">
+        <h2>Getting Started</h2>
+        <pre class="cli dollar">npm i @lemmon/custom-textarea</pre>
+        <h3>Use Inside Your Web App</h3>
+        <pre><span class="a5 o5">// does not register the component
+// useful when you want to extend the component
+// or to chose a different tag name</span>
+const Textarea = require('@lemmon/custom-textarea')
+customElements.define('custom-textarea', Textarea)</pre>
+        <p>or</p>
+        <pre><span class="a5 o5">// does register the component for you
+// with `custom-textarea` tagname</span>
+require('@lemmon/custom-textarea/element')</pre>
+        <h3>Use the CDN</h3>
+        <pre>&lt;script src="<a target="_blank" href="https://unpkg.com/@lemmon/custom-textarea/dist/element.js">https://unpkg.com/@lemmon/custom-textarea/dist/element.js</a>"&gt;&lt;/script&gt;</pre>
+        <h2>Example</h2>
+        <pre>&lt;custom-textarea name="text" placeholder="Write something here..."&gt;Hello World!&lt;/custom-textarea&gt;</pre>
+        <div class="">
+          <custom-textarea id="textarea" name="text" placeholder="Write something here..." class="ba p1b lh4"></custom-textarea>
+          <div class="row items-center mt05">
+            <label class="block mr1"><input type="checkbox" autocomplete="off" name="disabled" onclick="toggleDisabled(this)"> disabled</label>
+            <label class="block mr1"><input type="checkbox" autocomplete="off" name="readonly" onclick="toggleReadonly(this)"> readonly</label>
+            <label class="block mr1 ul cursor-pointer" onclick="insertText()">insert text</label>
+            <label class="block mr1 ul cursor-pointer" onclick="clearText()">clear text</label>
+          </div>
+        </div>
+        <h2>CSS Styling</h2>
+        <pre>custom-textarea {
+  --placeholder-color: inherit; <span class="a5 o5">// default value</span>
+  --placeholder-opacity: .5;    <span class="a5 o5">// default value</span>
+}
+custom-textarea[disabled] {
+  opacity: .5;
+  cursor: not-allowed;
+}</pre>
+      </div>
+    </div></section>
+
+  </div></main>
+
+  <div class="ld-px1">
+    <hr class="px1 div color-black-10">
+  </div>
+
+  <footer class="py2 md-px1 ld-p2">
+    <nav class="lh4">
+      <ul class="row flex-wrap py05">
+        <li class="px1 py05"><a class="ul" target="_blank" href="https://github.com/lemmon/custom-textarea">github</a></li>
+        <li class="px1 py05"><a class="ul" target="_blank" href="https://www.npmjs.com/package/@lemmon/custom-textarea">npm</a></li>
+        <li class="px1 py05">created by <a class="ul" target="_blank" href="http://www.lemmonjuice.com/">lemmon</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+</body>
+</html>
