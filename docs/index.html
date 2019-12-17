@@ -24,13 +24,16 @@
   function toggleReadonly(input) {
     textarea.readonly = input.checked
   }
-  function insertText() {
+  function generateText() {
     textarea.value = Array(Math.ceil(Math.random() * 3)).fill(null).map(() => (
       Array(Math.ceil(Math.random() * 32)).fill('Hello World.').join(' ')
     )).join('\n\n')
   }
   function clearText() {
     textarea.value = ''
+  }
+  function readValue() {
+    alert(textarea.name + ' = ' + textarea.value)
   }
   </script>
 </head>
@@ -74,8 +77,9 @@ require('@lemmon/custom-textarea/element')</pre>
           <div class="row items-center mt05">
             <label class="block mr1"><input type="checkbox" autocomplete="off" name="disabled" onclick="toggleDisabled(this)"> disabled</label>
             <label class="block mr1"><input type="checkbox" autocomplete="off" name="readonly" onclick="toggleReadonly(this)"> readonly</label>
-            <label class="block mr1 ul cursor-pointer" onclick="insertText()">insert text</label>
+            <label class="block mr1 ul cursor-pointer" onclick="generateText()">generate text</label>
             <label class="block mr1 ul cursor-pointer" onclick="clearText()">clear text</label>
+            <label class="block mr1 ul cursor-pointer" onclick="readValue()">read value</label>
           </div>
         </div>
         <h2>CSS Styling</h2>
