@@ -5,6 +5,7 @@ const css = ''
     + 'white-space:pre-wrap;'
     + 'overflow-wrap:break-word;'
     + 'word-break:normal;'
+    + 'cursor:text;'
   + '}'
   + 'textarea{'
     + 'webkit-appearance:none;-moz-appearance:none;appearance:none;'
@@ -29,6 +30,7 @@ const css = ''
     + 'background-color:transparent;'
     + 'box-shadow:none;'
     + 'outline:0;'
+    + 'cursor:inherit;'
   + '}'
   + 'textarea::placeholder{'
     + 'color:var(--placeholder-color,inherit);'
@@ -90,6 +92,7 @@ module.exports = class TextArea extends HTMLElement {
   set value(value) {
     this._input.value = value
     this.textContent = value
+    this.updatePreview()
   }
 
   get placeholder() {
