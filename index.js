@@ -49,6 +49,7 @@ module.exports = class TextArea extends HTMLElement {
       this.updatePreview()
     }
     this._input.onchange = e => {
+      this.textContent = this._input.value
       this.dispatchEvent(new Event('change', {
         bubbles: true,
         cancelable: true
@@ -90,6 +91,7 @@ module.exports = class TextArea extends HTMLElement {
 
   set value(value) {
     this._input.value = value
+    this.textContent = value
     this.updatePreview()
   }
 
