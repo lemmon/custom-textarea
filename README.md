@@ -4,6 +4,8 @@ Web Components custom-textarea element.
 
 Reason behind this component is to create a plain unstyled autogrowing textarea.
 
+[Demo](https://www.lemmonjuice.com/custom-textarea/)
+
 ## Install
 
 ```sh
