@@ -15,25 +15,26 @@ npm i @lemmon/custom-textarea
 ### Use Inside Your Web App
 
 ```js
-// does not register the component
-// useful when you want to extend the component
-// or to chose a different tag name
-const Textarea = require('@lemmon/custom-textarea')
-customElements.define('custom-textarea', Textarea)
+// does register the component for you
+// with `custom-textarea` tagname
+require('@lemmon/custom-textarea')
 ```
 
 or
 
 ```js
-// does register the component for you
-// with `custom-textarea` tagname
-require('@lemmon/custom-textarea/element')
+// does not register the component
+// useful when you want to extend the component
+// or to chose a different tag name
+const Textarea = require('@lemmon/custom-textarea/element')
+class TextareaUpgraded extends Textarea {}
+customElements.define('upgraded-textarea', TextareaUpgraded)
 ```
 
-### Use the CDN
+### Use With The CDN
 
 ```html
-<script src="https://unpkg.com/@lemmon/custom-textarea/dist/element.js"></script>
+<script src="https://unpkg.com/@lemmon/custom-textarea/dist/index.js"></script>
 ```
 
 ## Example

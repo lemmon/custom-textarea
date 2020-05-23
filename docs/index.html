@@ -16,7 +16,7 @@
     cursor: not-allowed;
   }
   </style>
-  <script src="../dist/element.js"></script>
+  <script src="../dist/index.js"></script>
   <script>
   function toggleDisabled(input) {
     textarea.disabled = input.checked
@@ -59,17 +59,17 @@
         <h2>Getting Started</h2>
         <pre class="cli dollar">npm i @lemmon/custom-textarea</pre>
         <h3>Use Inside Your Web App</h3>
+        <pre><span class="a5 o5">// does register the component for you
+// with `custom-textarea` tagname</span>
+require('@lemmon/custom-textarea')</pre>
+        <p>or</p>
         <pre><span class="a5 o5">// does not register the component
 // useful when you want to extend the component
 // or to chose a different tag name</span>
-const Textarea = require('@lemmon/custom-textarea')
+const Textarea = require('@lemmon/custom-textarea/element')
 customElements.define('custom-textarea', Textarea)</pre>
-        <p>or</p>
-        <pre><span class="a5 o5">// does register the component for you
-// with `custom-textarea` tagname</span>
-require('@lemmon/custom-textarea/element')</pre>
         <h3>Use the CDN</h3>
-        <pre>&lt;script src="<a target="_blank" href="https://unpkg.com/@lemmon/custom-textarea/dist/element.js">https://unpkg.com/@lemmon/custom-textarea/dist/element.js</a>"&gt;&lt;/script&gt;</pre>
+        <pre>&lt;script src="<a target="_blank" href="https://unpkg.com/@lemmon/custom-textarea/dist/index.js">https://unpkg.com/@lemmon/custom-textarea/dist/index.js</a>"&gt;&lt;/script&gt;</pre>
         <h2>Example</h2>
         <pre>&lt;custom-textarea name="text" placeholder="Write something here..."&gt;Hello World!&lt;/custom-textarea&gt;</pre>
         <div class="">
