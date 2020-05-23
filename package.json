@@ -1,6 +1,6 @@
 {
   "name": "@lemmon/custom-textarea",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "main": "index.js",
   "description": "Web Components custom-textarea element.",
   "author": "lemmon",
