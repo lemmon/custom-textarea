@@ -4,9 +4,81 @@
   <meta charset="utf-8">
   <title>&lt;custom-textarea&gt; Web Components Custom Element</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" href="https://unpkg.com/abrusco@0.8.1/css/abrusco.min.css">
-  <link rel="stylesheet" href="https://abrusco.com/bundle.css">
+  <link rel="stylesheet" href="https://unpkg.com/abrusco@0.10.0/css/abrusco.min.css">
   <style media="screen">
+  .minvh {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    @media (--ie) {
+      height: 100%;
+    }
+  }
+  .copy > *:first-child {
+    margin-top: 0;
+  }
+  .copy > *:last-child {
+    margin-bottom: 0;
+  }
+  .copy > *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(p) {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+  }
+  .copy > h1,
+  .copy > h2,
+  .copy > h3,
+  .copy > h4,
+  .copy > h5,
+  .copy > h6 {
+    margin-top: 1.5em;
+  }
+  .copy > p {
+    margin-top: .5em;
+    margin-bottom: 1.5em;
+  }
+  .code {
+    font-size: 14px;
+    line-height: 20px;
+    white-space: normal;
+    background-color: var(--black-05);
+    border: 1px solid var(--black-025);
+    padding: calc(1rem - 1px) calc(2ch - 1px);
+  }
+  .code__line {
+    min-height: 20px;
+  }
+  .code--shell .code__line {
+    position: relative;
+    padding-left: calc(2ch - 1px);
+  }
+  .code--shell .code__line:first-child::before {
+    content: "$";
+    display: block;
+    position: absolute;
+    left: 0;
+    opacity: .2;
+  }
+  .code--linenumbers {
+    counter-reset: code;
+  }
+  .code--linenumbers .code__line {
+    position: relative;
+    padding-left: calc(4ch - 1px);
+  }
+  .code--linenumbers .code__line::before {
+    counter-increment: code;
+    content: "0" counter(code);
+    display: block;
+    position: absolute;
+    left: 0;
+    opacity: .2;
+  }
+  .space {
+    display: inline-block;
+    white-space: pre;
+  }
+  .ul--dashed {
+    text-decoration-style: dashed;
+  }
   custom-textarea {
     --placeholder-color: inherit;
     --placeholder-opacity: .5;
@@ -37,78 +109,108 @@
   }
   </script>
 </head>
-<body class="col max64">
+<body>
 
-  <header class="py2 md-px1 ld-p2">
-    <div class="p075">
-      <h1 class="p025 h2 lh2 fw700">&lt;custom-textarea&gt;</h1>
-      <div class="p025">
-        <p class="lh4 color-black-50">Web Components custom-textarea element.</p>
+  <div class="minvh col max75 mx">
+
+    <header class="py2 md-px1 ld-p2">
+      <div class="p075">
+        <h1 class="p025 h2 lh2 fw700">&lt;custom-textarea&gt;</h1>
+        <div class="p025">
+          <p class="lh4 color-black-60">Web Components custom-textarea element.</p>
+        </div>
       </div>
+    </header>
+
+    <div class="ld-px1 max51">
+      <hr class="px1 div color-black-10">
     </div>
-  </header>
 
-  <div class="ld-px1">
-    <hr class="px1 div color-black-10">
-  </div>
+    <main class="py1 ld-py2">
 
-  <main class="span1 py1 ld-py2"><div class="p05">
+      <div class="p1">
+        <div class="p05">
+          <div class="max48">
+            <div class="p1">
+              <div class="p05">
 
-    <section class="py1 md-px1 ld-p2"><div class="p05">
-      <div class="copy lh4">
-        <h2>Getting Started</h2>
-        <pre class="cli dollar">npm i @lemmon/custom-textarea</pre>
-        <h3>Use Inside Your Web App</h3>
-        <pre><span class="a5 o5">// does register the component for you
-// with `custom-textarea` tagname</span>
-require('@lemmon/custom-textarea')</pre>
-        <p>or</p>
-        <pre><span class="a5 o5">// does not register the component
-// useful when you want to extend the component
-// or to chose a different tag name</span>
-const Textarea = require('@lemmon/custom-textarea/element')
-customElements.define('custom-textarea', Textarea)</pre>
-        <h3>Use the CDN</h3>
-        <pre>&lt;script src="<a target="_blank" href="https://unpkg.com/@lemmon/custom-textarea/dist/index.js">https://unpkg.com/@lemmon/custom-textarea/dist/index.js</a>"&gt;&lt;/script&gt;</pre>
-        <h2>Example</h2>
-        <pre>&lt;custom-textarea name="text" placeholder="Write something here..."&gt;Hello World!&lt;/custom-textarea&gt;</pre>
-        <div class="">
-          <custom-textarea id="textarea" name="text" placeholder="Write something here..." class="ba p1b lh4"></custom-textarea>
-          <div class="row items-center mt05">
-            <label class="block mr1"><input type="checkbox" autocomplete="off" name="disabled" onclick="toggleDisabled(this)"> disabled</label>
-            <label class="block mr1"><input type="checkbox" autocomplete="off" name="readonly" onclick="toggleReadonly(this)"> readonly</label>
-            <label class="block mr1 ul cursor-pointer" onclick="generateText()">generate text</label>
-            <label class="block mr1 ul cursor-pointer" onclick="clearText()">clear text</label>
-            <label class="block mr1 ul cursor-pointer" onclick="readValue()">read value</label>
+                <div class="copy lh4">
+                  <h2 class="h3 bold">Getting Started</h2>
+                  <pre class="code code--inverse code--shell"><code>
+                    <div class="code__line">npm i @lemmon/custom-textarea</div>
+                  </code></pre>
+                  <h3 class="h4 bold">Use Inside Your Web App</h3>
+                  <pre class="code code--linenumbers"><code>
+                    <div class="code__line"><span class="o40 italic">// does register the component for you</span></div>
+                    <div class="code__line"><span class="o40 italic">// with `custom-textarea` tagname</span></div>
+                    <div class="code__line">require<span class="color-black-50">(</span><span class="color-olive">'@lemmon/custom-textarea'</span><span class="color-black-50">)</span></div>
+                  </code></pre>
+                  <p>or</p>
+                  <pre class="code code--linenumbers"><code>
+                    <div class="code__line"><span class="o40 italic">// does not register the component</span></div>
+                    <div class="code__line"><span class="o40 italic">// useful when you want to extend the component</span></div>
+                    <div class="code__line"><span class="o40 italic">// or to chose a different tag name</span></div>
+                    <div class="code__line">const <span class="ul">Textarea</span> <span class="color-black-50">=</span> require<span class="color-black-50">(</span><span class="color-olive">'@lemmon/custom-textarea/element'</span><span class="color-black-50">)</span></div>
+                    <div class="code__line">class <span class="ul">TextareaUpgraded</span> extends <span class="ul">Textarea</span> <span class="color-black-50">{}</span></div>
+                    <div class="code__line">customElements<span class="color-black-50">.</span>define<span class="color-black-50">(</span><span class="color-olive">'upgraded-textarea'</span><span class="color-black-50">,</span> <span class="ul">TextareaUpgraded</span><span class="color-black-50">)</span></div>
+                  </code></pre>
+                  <h3 class="h4 bold">Use with a CDN</h3>
+                  <pre class="code code--linenumbers"><code>
+                    <div class="code__line"><span class="color-black-50">&lt;</span>script
+                      src<span class="color-black-50">=</span><span class="color-olive">"<a class="ul ul--dashed" href="https://unpkg.com/@lemmon/custom-textarea/dist/index.js">https://unpkg.com/@lemmon/custom-textarea/dist/index.js</a>"</span><span class="color-black-50">&gt;</span><span class="color-black-50">&lt;/</span>script<span class="color-black-50">&gt;</span></div>
+                  </code></pre>
+                  <h2 class="h3 bold">Example</h2>
+                  <pre class="code code--linenumbers"><code>
+                    <div class="code__line"><span class="color-black-50">&lt;</span>custom-textarea
+                      name<span class="color-black-50">=</span><span class="color-olive">"text"</span>
+                      placeholder<span class="color-black-50">=</span><span class="color-olive">"Write something here..."</span><span class="color-black-50">&gt;</span>Hello World!<span class="color-black-50">&lt;/</span>custom-textarea<span class="color-black-50">&gt;</span></div>
+                  </code></pre>
+                  <div>
+                    <custom-textarea id="textarea" name="text" placeholder="Write something here..." class="ba p1b lh4"></custom-textarea>
+                    <div class="row items-center mt05">
+                      <label class="block mr1"><input type="checkbox" autocomplete="off" name="disabled" onclick="toggleDisabled(this)"> disabled</label>
+                      <label class="block mr1"><input type="checkbox" autocomplete="off" name="readonly" onclick="toggleReadonly(this)"> readonly</label>
+                      <label class="block mr1 ul cursor-pointer" onclick="generateText()">generate text</label>
+                      <label class="block mr1 ul cursor-pointer" onclick="clearText()">clear text</label>
+                      <label class="block mr1 ul cursor-pointer" onclick="readValue()">read value</label>
+                    </div>
+                  </div>
+                  <h2 class="h3 bold">CSS Styling</h2>
+                  <pre class="code code--linenumbers"><code>
+                    <div class="code__line">custom-textarea <span class="color-black-50">{</span></div>
+                    <div class="code__line"><span class="space">  </span>--placeholder-color<span class="color-black-50">:</span> inherit<span class="color-black-50">;</span> <span class="o40 italic">/* default value */</span></div>
+                    <div class="code__line"><span class="space">  </span>--placeholder-opacity<span class="color-black-50">:</span> <span class="color-orange">.5</span><span class="color-black-50">;</span><span class="space">    </span><span class="o40 italic">/* default value */</span></div>
+                    <div class="code__line"><span class="color-black-50">}</span></div>
+                    <div class="code__line">custom-textarea[disabled] <span class="color-black-50">{</span></div>
+                    <div class="code__line"><span class="space">  </span>opacity<span class="color-black-50">:</span> <span class="color-orange">.5</span><span class="color-black-50">;</span></div>
+                    <div class="code__line"><span class="space">  </span>cursor<span class="color-black-50">:</span> not-allowed<span class="color-black-50">;</span></div>
+                    <div class="code__line"><span class="color-black-50">}</span></div>
+                  </code></pre>
+                </div>
+
+              </div>
+            </div>
           </div>
         </div>
-        <h2>CSS Styling</h2>
-        <pre>custom-textarea {
-  --placeholder-color: inherit; <span class="a5 o5">// default value</span>
-  --placeholder-opacity: .5;    <span class="a5 o5">// default value</span>
-}
-custom-textarea[disabled] {
-  opacity: .5;
-  cursor: not-allowed;
-}</pre>
       </div>
-    </div></section>
 
-  </div></main>
+    </main>
 
-  <div class="ld-px1">
-    <hr class="px1 div color-black-10">
+    <div class="ld-px1">
+      <hr class="px1 div color-black-10">
+    </div>
+
+    <footer class="py2 md-px1 ld-p2">
+      <nav class="lh4">
+        <ul class="row flex-wrap py05">
+          <li class="px1 py05"><a class="ul" href="https://github.com/lemmon/custom-textarea">github</a></li>
+          <li class="px1 py05"><a class="ul" href="https://www.npmjs.com/package/@lemmon/custom-textarea">npm</a></li>
+          <li class="px1 py05">created by <a class="ul" href="http://www.lemmonjuice.com/">lemmon</a></li>
+        </ul>
+      </nav>
+    </footer>
+
   </div>
-
-  <footer class="py2 md-px1 ld-p2">
-    <nav class="lh4">
-      <ul class="row flex-wrap py05">
-        <li class="px1 py05"><a class="ul" target="_blank" href="https://github.com/lemmon/custom-textarea">github</a></li>
-        <li class="px1 py05"><a class="ul" target="_blank" href="https://www.npmjs.com/package/@lemmon/custom-textarea">npm</a></li>
-        <li class="px1 py05">created by <a class="ul" target="_blank" href="http://www.lemmonjuice.com/">lemmon</a></li>
-      </ul>
-    </nav>
-  </footer>
 
 </body>
 </html>
