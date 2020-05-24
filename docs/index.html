@@ -42,35 +42,11 @@
     background-color: var(--black-05);
     border: 1px solid var(--black-025);
     padding: calc(1rem - 1px) calc(2ch - 1px);
+    overflow-wrap: break-word;
+    word-break: normal;
   }
   .code__line {
     min-height: 20px;
-  }
-  .code--shell .code__line {
-    position: relative;
-    padding-left: calc(2ch - 1px);
-  }
-  .code--shell .code__line:first-child::before {
-    content: "$";
-    display: block;
-    position: absolute;
-    left: 0;
-    opacity: .2;
-  }
-  .code--linenumbers {
-    counter-reset: code;
-  }
-  .code--linenumbers .code__line {
-    position: relative;
-    padding-left: calc(4ch - 1px);
-  }
-  .code--linenumbers .code__line::before {
-    counter-increment: code;
-    content: "0" counter(code);
-    display: block;
-    position: absolute;
-    left: 0;
-    opacity: .2;
   }
   .space {
     display: inline-block;
@@ -78,6 +54,34 @@
   }
   .ul--dashed {
     text-decoration-style: dashed;
+  }
+  @media (min-width: 32rem) {
+    .code--shell .code__line {
+      position: relative;
+      padding-left: calc(2ch - 1px);
+    }
+    .code--shell .code__line:first-child::before {
+      content: "$";
+      display: block;
+      position: absolute;
+      left: 0;
+      opacity: .2;
+    }
+    .code--linenumbers {
+      counter-reset: code;
+    }
+    .code--linenumbers .code__line {
+      position: relative;
+      padding-left: calc(4ch - 1px);
+    }
+    .code--linenumbers .code__line::before {
+      counter-increment: code;
+      content: "0" counter(code);
+      display: block;
+      position: absolute;
+      left: 0;
+      opacity: .2;
+    }
   }
   custom-textarea {
     --placeholder-color: inherit;
@@ -126,13 +130,13 @@
       <hr class="px1 div color-black-10">
     </div>
 
-    <main class="py1 ld-py2">
+    <main class="sd-py1 ld-py2">
 
-      <div class="p1">
-        <div class="p05">
+      <div class="py1 ld-p1">
+        <div class="py05 md-p05">
           <div class="max48">
             <div class="p1">
-              <div class="p05">
+              <div class="py05 md-p05">
 
                 <div class="copy lh4">
                   <h2 class="h3 bold">Getting Started</h2>
@@ -167,7 +171,7 @@
                   </code></pre>
                   <div>
                     <custom-textarea id="textarea" name="text" placeholder="Write something here..." class="ba p1b lh4"></custom-textarea>
-                    <div class="row items-center mt05">
+                    <div class="sd-row items-center mt05">
                       <label class="block mr1"><input type="checkbox" autocomplete="off" name="disabled" onclick="toggleDisabled(this)"> disabled</label>
                       <label class="block mr1"><input type="checkbox" autocomplete="off" name="readonly" onclick="toggleReadonly(this)"> readonly</label>
                       <label class="block mr1 ul cursor-pointer" onclick="generateText()">generate text</label>
