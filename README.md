@@ -15,7 +15,7 @@ npm i @lemmon/custom-textarea
 or reference directly:
 
 ```html
-<script src="https://unpkg.com/@lemmon/textarea">
+<script src="https://unpkg.com/@lemmon/custom-textarea">
 ```
 
 ### Usage
