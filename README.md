@@ -12,21 +12,27 @@ Reason behind this component is to create a plain unstyled autogrowing textarea.
 npm i @lemmon/custom-textarea
 ```
 
-### Use Inside Your Web App
+or reference directly:
+
+```html
+<script src="https://unpkg.com/@lemmon/textarea">
+```
+
+### Usage
 
 ```js
 // does register the component for you
 // with `custom-textarea` tagname
-require('@lemmon/custom-textarea')
+import '@lemmon/custom-textarea'
 ```
 
 or
 
 ```js
-// does not register the component
+// does not register the component,
 // useful when you want to extend the component
 // or to chose a different tag name
-const Textarea = require('@lemmon/custom-textarea/element')
+import Textarea from '@lemmon/custom-textarea/textarea'
 class TextareaUpgraded extends Textarea {}
 customElements.define('upgraded-textarea', TextareaUpgraded)
 ```
@@ -34,7 +40,11 @@ customElements.define('upgraded-textarea', TextareaUpgraded)
 ### Use With The CDN
 
 ```html
-<script src="https://unpkg.com/@lemmon/custom-textarea/dist/index.js"></script>
+<script type="module" src="https://unpkg.com/@lemmon/custom-textarea"></script>
+
+<!-- or for the ES5 version -->
+
+<script src="https://unpkg.com/@lemmon/custom-textarea/dist/es5.js"></script>
 ```
 
 ## Example
@@ -48,7 +58,7 @@ You can apply your own styles. Fonts, colors, line-height, and padding are inher
 ```css
 custom-textarea {
   --placeholder-color: orange; /* default: inherit */
-  --placeholder-opacity: 1;    /* default: 0.5 */
+  --placeholder-opacity: 1; /* default: 0.5 */
 }
 ```
 

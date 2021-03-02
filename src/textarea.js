@@ -37,7 +37,7 @@ const css = ''
     + 'opacity:var(--placeholder-opacity,.5);'
   + '}'
 
-module.exports = class TextArea extends HTMLElement {
+export default class TextArea extends HTMLElement {
 
   constructor() {
     super()

@@ -1,2 +1,3 @@
-const Textarea = require('./element.js')
+import Textarea from './textarea.js'
+
 customElements.define('custom-textarea', Textarea)

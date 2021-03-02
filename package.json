@@ -1,17 +1,24 @@
 {
   "name": "@lemmon/custom-textarea",
   "version": "0.1.1",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "src/index.js",
   "description": "Web Components custom-textarea element.",
   "author": "lemmon",
   "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
+    "@rollup/plugin-babel": "^5.3.0",
+    "rollup": "^2.40.0",
+    "rollup-plugin-terser": "^7.0.2"
+  },
   "scripts": {
-    "build": "browserify index.js | babel-env | minify > dist/index.js",
+    "build": "rollup -c",
     "version": "npm run build && git add -A dist",
     "postversion": "git push && git push --tags && npm publish",
-    "w": "watchify index.js -o dist/index.js --verbose"
+    "w": "rollup -c -w"
   },
-  "browserslist": "firefox 63, chrome 67",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lemmon/custom-textarea.git"
@@ -21,7 +28,7 @@
   },
   "files": [
     "/dist",
-    "/*.js"
+    "/src"
   ],
   "keywords": [
     "html",
@@ -29,10 +36,5 @@
     "custom-elements",
     "textarea",
     "autogrow"
-  ],
-  "eslintConfig": {
-    "parserOptions": {
-      "ecmaVersion": 2018
-    }
-  }
+  ]
 }
