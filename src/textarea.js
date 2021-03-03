@@ -122,12 +122,6 @@ export default class TextArea extends HTMLElement {
   }
 
   updatePreview() {
-    this._preview.innerHTML = this._input.value
-      .replace(/&/gm, '&amp;')
-      .replace(/"/gm, '&quot;')
-      .replace(/'/gm, '&#39;')
-      .replace(/</gm, '&lt;')
-      .replace(/>/gm, '&gt;')
-      + ' '
+    this._preview.innerText = this._input.value + ' '
   }
 }
