@@ -1,6 +1,5 @@
 import postcss from 'rollup-plugin-postcss'
 import postcssPresetEnv from 'postcss-preset-env'
-import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
 import babel from '@rollup/plugin-babel'
 import { terser } from 'rollup-plugin-terser'
