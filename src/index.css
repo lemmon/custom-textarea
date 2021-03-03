@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  position: relative;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: normal;
+  cursor: text;
+}
+
+textarea {
+  appearance: none;
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  overflow: hidden;
+  padding: inherit;
+  margin: 0;
+  border: 0;
+  font: inherit;
+  text-align: inherit;
+  color: inherit;
+  background-color: transparent;
+  box-shadow: none;
+  outline: 0;
+  cursor: inherit;
+}
+
+textarea::placeholder {
+  color: var(--placeholder-color, inherit);
+  opacity: var(--placeholder-opacity, 0.5);
+}
