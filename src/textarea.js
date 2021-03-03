@@ -1,28 +1,29 @@
 import css from './index.css'
 
 export default class TextArea extends HTMLElement {
-
   constructor() {
     super()
-    const shadow = this.attachShadow({ mode: 'open' })
+    const root = this.attachShadow({ mode: 'open' })
     this._preview = document.createElement('div')
     this._preview.style.color = 'transparent'
     this._input = document.createElement('textarea')
-    this._input.oninput = e => {
+    this._input.oninput = () => {
       this.updatePreview()
     }
-    this._input.onchange = e => {
+    this._input.onchange = () => {
       this.textContent = this._input.value
-      this.dispatchEvent(new Event('change', {
-        bubbles: true,
-        cancelable: true
-      }))
+      this.dispatchEvent(
+        new Event('change', {
+          bubbles: true,
+          cancelable: true,
+        })
+      )
     }
     const style = document.createElement('style')
     style.textContent = css
-    shadow.appendChild(style)
-    shadow.appendChild(this._preview)
-    shadow.appendChild(this._input)
+    root.appendChild(style)
+    root.appendChild(this._preview)
+    root.appendChild(this._input)
   }
 
   connectedCallback() {
@@ -34,7 +35,7 @@ export default class TextArea extends HTMLElement {
     return ['placeholder', 'disabled', 'readonly']
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
+  attributeChangedCallback() {
     this._input.disabled = this.hasAttribute('disabled')
     this._input.readOnly = this.hasAttribute('readonly')
     this._input.placeholder = this.getAttribute('placeholder')
